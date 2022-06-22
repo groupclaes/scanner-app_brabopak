@@ -12,5 +12,5 @@ var response = await GetClient()
  
 ```js
 var response = await GetClient()
-  .PostAsync($"DeliveryNote/Transport?bookyear={bookyear}&dnNumber={dnNumber}&pinCode={pincode}", null);
+  .PostAsync($"DeliveryNote/Transport?bookyear={bookyear}&dnNumber={dnNumber}&pinCode={pincode}", null)
 ```

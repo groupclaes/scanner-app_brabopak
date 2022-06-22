@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  api_search:
+    image: docker-registry.groupclaes.be/bra_scanner-app_api_delivery-note
+    environment:
+      APP_VERSION: test
+      NODE_ENV: production
+    deploy:
+      mode: replicated
+      replicas: 2
+      placement:
+        constraints:
+          - node.labels.worker == true
+          - node.labels.region == eu-west
+        preferences:
+          - spread: node.labels.location
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 40M
+        reservations:
+          memory: 20M
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.braweb-scanappapi-delivery-note.rule=Host(`api.groupclaes.be`) && PathPrefix(`/test/brabopak/scanner-app/delivery-note`)"
+        - "traefik.http.routers.braweb-scanappapi-delivery-note.entrypoints=web"
+        - "traefik.http.services.braweb-scanappapi-delivery-note.loadbalancer.server.port=80"
+    healthcheck:
+      test: wget -q --spider http://localhost/healthcheck || exit 1
+      interval: 10s
+      timeout: 5s
+      start_period: 5s
+      retries: 2
+    configs:
+      - source: bra_scanner-app_api_delivery-note_test
+        target: /usr/src/app/config.js
+    networks:
+      - traefik_web
+      - logging
+      - openedge
+      - default
+
+networks:
+  traefik_web:
+    external: true
+  logging:
+    external: true
+  openedge:
+    external: true
+
+configs:
+  bra_scanner-app_api_delivery-note_test:
+    external: true
