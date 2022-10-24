@@ -1,4 +1,3 @@
-const boom = require('boom')
 const oe = require('@groupclaes/oe-connector')
 const { FastifyRequest, FastifyReply } = require('fastify')
 
@@ -41,6 +40,8 @@ exports.post = async (request, reply) => {
       .code(oeResponse.status)
       .send(oeResponse)
   } catch (err) {
-    throw boom.boomify(err)
+    return reply
+      .status(500)
+      .send(err)
   }
 }

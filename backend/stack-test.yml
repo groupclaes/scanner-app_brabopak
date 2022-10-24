@@ -1,14 +1,14 @@
 version: "3.8"
 
 services:
-  api_search:
+  api_delivery-note:
     image: docker-registry.groupclaes.be/bra_scanner-app_api_delivery-note
     environment:
       APP_VERSION: test
       NODE_ENV: production
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       placement:
         constraints:
           - node.labels.worker == true
@@ -17,10 +17,9 @@ services:
           - spread: node.labels.location
       resources:
         limits:
-          cpus: "0.5"
-          memory: 40M
+          memory: 64M
         reservations:
-          memory: 20M
+          memory: 28M
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.braweb-scanappapi-delivery-note.rule=Host(`api.groupclaes.be`) && PathPrefix(`/test/brabopak/scanner-app/delivery-note`)"
