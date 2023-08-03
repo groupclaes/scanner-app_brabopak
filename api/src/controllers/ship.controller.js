@@ -24,7 +24,9 @@ exports.post = async (request, reply) => {
           docNum: datamatrix
         }]
       }
-    ])
+    ], {
+      simpleParameters: true
+    })
 
     if (oeResponse && oeResponse.status === 200) {
       if (oeResponse.result) {

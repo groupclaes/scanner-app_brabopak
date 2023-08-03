@@ -28,7 +28,9 @@ exports.post = async (request, reply) => {
           location
         }]
       }
-    ])
+    ], {
+      simpleParameters: true
+    })
 
     if (oeResponse && oeResponse.status === 200) {
       if (oeResponse.result) {
