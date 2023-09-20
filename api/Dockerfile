@@ -44,7 +44,6 @@ USER node
 WORKDIR /usr/src/app
 
 # copy file and packages from build
-COPY src/templates ./templates
 COPY --from=build /usr/src/app/index.min.js ./index.js
 COPY --from=deps /usr/src/app/node_modules/ ./node_modules
 
