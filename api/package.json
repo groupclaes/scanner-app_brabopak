@@ -1,11 +1,10 @@
 {
-  "name": "scanner-app_api",
-  "version": "1.0.1",
+  "name": "scanner-app-api_brabopak",
+  "version": "1.0.2",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.min.js",
   "scripts": {
-    "start": "node src/index.js",
-    "publish": "./build_publish_docker-image.sh"
+    "start": "node dist/index.min.js"
   },
   "author": {
     "name": "Jamie Vangeysel",
@@ -13,8 +12,12 @@
     "url": "https://jamievangeysel.be"
   },
   "dependencies": {
-    "@groupclaes/fastify-elastic": "^3.0.6",
+    "@groupclaes/fastify-elastic": "^4.1.2",
     "@groupclaes/oe-connector": "^1.2.5",
     "fastify": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.17.17",
+    "esbuild": "^0.19.3"
   }
 }
