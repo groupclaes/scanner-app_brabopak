@@ -19,6 +19,9 @@ export default async function (fastify: FastifyInstance) {
       pin: string
       col?: string
       loc?: string
+      pal?: string
+      pal2?: string
+      wght?: string
     }
   }>, reply: FastifyReply) {
     try {
@@ -36,6 +39,13 @@ export default async function (fastify: FastifyInstance) {
       if (request.params.document_type === 'pick') {
         payload.data[0].collies = request.query.col
         payload.data[0].location = request.query.loc
+
+        if (request.query.pal)
+          payload.data[0].pallets = request.query.pal
+        if (request.query.pal2)
+          payload.data[0].pallets_half = request.query.pal2
+        if (request.query.wght)
+          payload.data[0].total_weight = request.query.wght
       }
 
       const oeResponse = await oe.run('slshbra01b', [
