@@ -24,6 +24,7 @@ export default async function (fastify: FastifyInstance) {
       wght?: string
     }
   }>, reply: FastifyReply) {
+    request.log.debug({ ...request.query, ...request.params }, 'params')
     try {
       oe.configure({
         c: false
