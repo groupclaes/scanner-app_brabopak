@@ -2,9 +2,8 @@
   "name": "scanner-app-api_brabopak",
   "version": "1.1.0",
   "description": "",
-  "main": "dist/index.min.js",
   "scripts": {
-    "start": "node dist/index.min.js"
+    "test": "tap --reporter=list --show-full-coverage"
   },
   "author": {
     "name": "Jamie Vangeysel",
@@ -12,12 +11,12 @@
     "url": "https://jamievangeysel.be"
   },
   "dependencies": {
-    "@groupclaes/fastify-elastic": "^4.1.2",
+    "@groupclaes/fastify-elastic": "^4.3.1",
     "@groupclaes/oe-connector": "^1.2.5",
-    "fastify": "^4.21.0"
+    "fastify": "^4.28.1"
   },
   "devDependencies": {
-    "@types/node": "^18.17.17",
-    "esbuild": "^0.19.3"
+    "@types/node": "^18.19.45",
+    "esbuild": "^0.19.12"
   }
 }

@@ -8,5 +8,7 @@ readme.md
 #deps def
 package-lock.json
 
+.tap/
 .dockerignore
 Dockerfile
+config.js

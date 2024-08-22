@@ -59,19 +59,19 @@ export default async function (fastify: FastifyInstance) {
       })
 
       if (oeResponse && oeResponse.status === 200) {
-        if (oeResponse.result) {
+        if (oeResponse.result)
           return oeResponse.result
-        } else {
+        else
           return reply
             .code(204)
             .send()
-        }
       }
 
       return reply
         .code(oeResponse.status)
         .send(oeResponse)
     } catch (err) {
+      request.log.error('unknown error while handling request.')
       return reply
         .status(500)
         .send(err)
