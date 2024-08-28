@@ -22,6 +22,8 @@ export default async function (fastify: FastifyInstance) {
       pal?: string
       pal2?: string
       wght?: string
+      wpa?: string
+      tb?: string
     }
   }>, reply: FastifyReply) {
     request.log.debug({ ...request.query, ...request.params }, 'params')
@@ -46,7 +48,11 @@ export default async function (fastify: FastifyInstance) {
         if (request.query.pal2)
           payload.data[0].pallets_half = request.query.pal2
         if (request.query.wght)
+          payload.data[0].pallets_disposable = request.query.wpa
+        if (request.query.tb)
           payload.data[0].total_weight = request.query.wght
+        if (request.query.wpa)
+          payload.data[0].bag_boxes = request.query.tb
       }
 
       const oeResponse = await oe.run('slshbra01b', [
