@@ -35,7 +35,7 @@ export default async function (fastify: FastifyInstance) {
       let payload: any = {
         data: [{
           action: request.params.document_type.toUpperCase(),
-          docNum: request.query.dm.replaceAll(' ', '').replaceAll('%20', '')
+          docNum: request.query.dm.replaceAll(' ', '').replaceAll('%20', '').replaceAll('%C2%A0', '')
         }]
       }
 
