@@ -35,7 +35,10 @@ export default async function (fastify: FastifyInstance) {
       let payload: any = {
         data: [{
           action: request.params.document_type.toUpperCase(),
-          docNum: request.query.dm.replaceAll(' ', '').replaceAll('%20', '').replaceAll('%C2%A0', '')
+          docNum: request.query.dm
+            .replaceAll(' ', '')
+            .replaceAll('%20', '')
+            .replaceAll('%C2%A0', '')
         }]
       }
 
@@ -54,6 +57,8 @@ export default async function (fastify: FastifyInstance) {
         if (request.query.wpa)
           payload.data[0].bag_boxes = request.query.tb
       }
+
+      request.log.debug(payload, 'payload')
 
       const oeResponse = await oe.run('slshbra01b', [
         request.query.pin,
