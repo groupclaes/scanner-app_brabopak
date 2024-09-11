@@ -36,9 +36,7 @@ export default async function (fastify: FastifyInstance) {
         data: [{
           action: request.params.document_type.toUpperCase(),
           docNum: request.query.dm
-            .replaceAll(' ', '')
-            .replaceAll('%20', '')
-            .replaceAll('%C2%A0', '')
+            .replace(/\xA0/g, ' ')
         }]
       }
 
