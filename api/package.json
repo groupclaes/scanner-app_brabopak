@@ -11,12 +11,12 @@
     "url": "https://jamievangeysel.be"
   },
   "dependencies": {
-    "@groupclaes/fastify-elastic": "^4.3.1",
+    "@groupclaes/fastify-elastic": "^4.4.0",
     "@groupclaes/oe-connector": "^1.2.5",
     "fastify": "^4.28.1"
   },
   "devDependencies": {
-    "@types/node": "^18.19.45",
+    "@types/node": "^20.16.5",
     "esbuild": "^0.19.12"
   }
 }
