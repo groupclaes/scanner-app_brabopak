@@ -1,0 +1,25 @@
+name: CI
+
+defaults:
+  run:
+    working-directory: ./api
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm i
+          npm test
+
+  coverage:
+    uses: ./.github/workflows/reusable.yml
+    secrets:
+      token: ${{ secrets.QLTY_COVERAGE_TOKEN }}

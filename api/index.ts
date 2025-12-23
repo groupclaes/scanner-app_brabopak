@@ -1,15 +1,17 @@
 import server from './src'
+
 const cfg = require('./config')
+const SIGNALS = ['SIGTERM', 'SIGINT']
 
-const main = async function () {
-  const fastify = await server(cfg);
+const main = async function() {
+  const fastify = await server(cfg)
 
-  ['SIGTERM', 'SIGINT'].forEach(signal => {
-    process.on(signal, async () => {
+  SIGNALS.forEach(function onSignal(signal) {
+    process.on(signal, async function handleSignal() {
       await fastify?.close()
       process.exit(0)
     })
   })
 }
 
-main()
+main().then()

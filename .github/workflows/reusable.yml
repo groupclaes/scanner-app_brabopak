@@ -1,0 +1,24 @@
+name: Coverage (Reusable)
+
+on:
+  workflow_call:
+    secrets:
+      token:
+        required: true
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm test
+
+      - uses: qltysh/qlty-action/coverage@v2
+        with:
+          token: ${{ secrets.token }}
+          files: coverage/lcov.info
