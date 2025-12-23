@@ -17,6 +17,6 @@ module.exports = {
     "json",
     "node"
   ],
-  coverageDirectory: '../coverage/',
+  coverageDirectory: './coverage/',
   coverageReporters: ['lcovonly']
 }
