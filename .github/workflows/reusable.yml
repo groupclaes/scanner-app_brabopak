@@ -25,5 +25,5 @@ jobs:
       - uses: qltysh/qlty-action/coverage@v2
         with:
           token: ${{ secrets.token }}
-          files: coverage/lcov.info
+          files: api/coverage/lcov.info
           add-prefix: api
