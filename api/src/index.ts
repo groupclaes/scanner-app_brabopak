@@ -7,7 +7,7 @@ import deliveryNoteController from './controllers/delivery-note.controller'
 const LOGLEVEL = 'debug'
 
 /** Main loop */
-export default async function main(config: any): Promise<FastifyInstance | undefined> {
+export default async function main(config?: any): Promise<FastifyInstance | undefined> {
   let fastify: FastifyInstance | undefined
 
   if (config) {
