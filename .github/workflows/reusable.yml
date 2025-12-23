@@ -1,5 +1,9 @@
 name: Coverage (Reusable)
 
+defaults:
+  run:
+    working-directory: ./api
+
 on:
   workflow_call:
     secrets:
